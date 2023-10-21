@@ -45,12 +45,15 @@ if (navigation) {
 const drinksControls = document.querySelectorAll('.drink__controls');
 drinksControls.forEach(coltrols => {
   const btn = coltrols.querySelector('.order-btn');
-  const id = coltrols.querySelector('.drink-id')?.value;
-  if (!(btn && id)) {
+  const id = Number(coltrols.querySelector('.drink-id')?.value);
+  console.log(btn, id)
+  if (!(btn && id > -1)) {
     return;
   }
   btn.addEventListener('click', async () => {
-    const ordered = result.find(item => item.id === id)?.ordered
+    const item = result.find(item => item.id === id);
+    console.log(item, id)
+    const ordered = item?.ordered
     await fetch(`http://localhost:4000/api/drinks/${id}`, {
       method: 'PATCH',
       headers: {
