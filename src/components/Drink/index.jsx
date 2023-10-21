@@ -1,7 +1,7 @@
 import './index.css'
 import Layer from '../Layer'
 
-export default ({name, ordered, image, layers}) => (
+export default ({name, ordered, image, layers, id}) => (
   <div className="drink">
     <div className="drink__product">
       <div className="drink__cup">
@@ -13,8 +13,10 @@ export default ({name, ordered, image, layers}) => (
       </div>
     </div>
     <div className="drink__controls">
-      <button className="order-btn">
-        Objednat
+      <input className="drink-id" type='hidden' value={id} />
+      <input className="drink-ordered" type='hidden' value={ordered} />
+      <button className={ordered ? 'order-btn order-btn--ordered' : 'order-btn'}>
+        {ordered ? 'Zrušit' : 'Objednat'}
       </button>
     </div>
   </div>
