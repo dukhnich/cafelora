@@ -1,4 +1,5 @@
 import './index.css'
+import Layer from '../Layer'
 
 export default ({name, ordered, image, layers}) => (
   <div className="drink">
@@ -8,10 +9,7 @@ export default ({name, ordered, image, layers}) => (
       </div>
       <div className="drink__info">
         <h3>{name}</h3>
-        <div className="layer">
-          <div className="layer__color" style={{ backgroundColor: '#613916' }}></div>
-          <div className="layer__label">espresso</div>
-        </div>
+        {layers.map((layer, i) => <Layer {...layer} key={i} />)}
       </div>
     </div>
     <div className="drink__controls">
