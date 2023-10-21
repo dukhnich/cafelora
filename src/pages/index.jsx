@@ -13,7 +13,7 @@ const {result} = await response.json()
 
 document.querySelector('#root').innerHTML = render(
   <div className="page">
-    <Header />
+    <Header showMenu={true}/>
     <main id="home">
       <Banner />
       <Menu drinks={result} />
